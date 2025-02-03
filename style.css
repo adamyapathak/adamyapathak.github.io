@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    background-color: #1C1F26; /* Deep blue-black for a premium dark look */
+    color: #D0D8E8;            /* Soft, premium light blue-gray text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Container Styling */
+.container {
+    max-width: 520px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #242933, #1A1E24); /* Subtle gradient for depth */
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); /* Deeper shadow for a rich, floating effect */
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-4px); /* Slight lift effect on hover */
+    background: linear-gradient(145deg, #2B313D, #1F232B); /* Slight lightening for dynamic feel */
+}
+
+/* Form Elements */
+label {
+    display: block;
+    margin: 12px 0 6px;
+    color: #E5EAF5; /* Crisp light gray-blue for clarity */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    background-color: #2B2F38; /* Darker input background */
+    border: 1px solid #4A4F5C; /* Subtle borders */
+    border-radius: 8px;
+    color: #F1F1F1;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #9A9A9A; /* Subtle, elegant placeholder text */
+    font-style: italic;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #6CA0DC;     /* Blue highlight on focus */
+    background-color: #353A45; /* Slightly lighter focus background */
+    outline: none;
+    box-shadow: 0 0 8px rgba(108, 160, 220, 0.5); /* Soft glowing outline */
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #417BBD, #35689E); /* Gradient blue */
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    margin: 8px 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(65, 123, 189, 0.4); /* Soft shadow */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #5A9DE0, #4A85C7); /* Brighter hover effect */
+    transform: translateY(-3px); /* Elevated button on hover */
+    box-shadow: 0 6px 18px rgba(90, 157, 224, 0.6); /* Enhanced hover shadow */
+}
+
+button:active {
+    transform: translateY(0); /* Press effect */
+    box-shadow: 0 3px 8px rgba(90, 157, 224, 0.4);
+}
+
+/* Checkboxes */
+.checkbox-group label {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    color: #D0D8E8;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+    accent-color: #417BBD; /* Premium blue for checkboxes */
+    cursor: pointer;
+    transition: transform 0.2s ease, accent-color 0.3s ease;
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.4); /* Slight zoom on hover */
+    accent-color: #5A9DE0;
+}
+
+/* Textareas */
+textarea {
+    min-height: 100px;
+    resize: vertical; /* Allow resizing vertically */
+}
+
+/* Navigation Buttons Alignment */
+button + button {
+    margin-left: 10px;
+}
+
+/* Hidden Pages */
+.hidden {
+    display: none;
+}

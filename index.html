@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page 1: Welcome and Intro -->
+    <div class="container" id="page1">
+        <h1>Welcome to 3490 Viper Drive Scouting App</h1>
+        <label for="scout-name">Select Your Name:</label>
+        <select id="scout-name" required>
+            <option value="">Select...</option>
+            <option value="Scout 1">Adamya Pathak</option>
+            <option value="Scout 2">Adam Myers</option>
+            <option value="Scout 3">Jabari Rehubottom</option>
+        </select>
+
+        <!-- Buttons to navigate to match scouting or pit scouting -->
+        <button onclick="nextPage(2)">Match Scouting</button>
+        <button onclick="openPitScouting()">Pit Scouting</button>
+    </div>
+
+    <!-- Page 2: Match Scouting Form -->
+    <div class="container hidden" id="page2">
+        <h1>Team Information</h1>
+        <label for="match-number">Match Number:</label>
+        <input type="number" id="match-number" required>
+
+        <label for="team-number">Team Number:</label>
+        <input type="number" id="team-number" required>
+
+        <label>Alliance:</label>
+        <select id="alliance" required>
+            <option value="">Select...</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+        </select>
+
+        <label>Autonomous Tasks Done:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="crossed-line"> Crossed the Line</label>
+            <label><input type="checkbox" id="scored-1-coral"> Scored 1 Coral</label>
+            <label><input type="checkbox" id="scored-2-coral"> Scored 2 Corals</label>
+            <label><input type="checkbox" id="knocked-off-algae"> Knocked Off Algae</label>
+        </div>
+
+        <label>Corals Scored During Teleop:</label>
+        <input type="number" id="coral-scored" required>
+
+        <label>Algae Scored During Teleop:</label>
+        <input type="number" id="algae-scored" required>
+
+        <label>Endgame Tasks:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="shallow-cage"> Completed Shallow Cage</label>
+            <label><input type="checkbox" id="deep-cage"> Completed Deep Cage</label>
+            <label><input type="checkbox" id="park"> Parked the Robot</label>
+        </div>
+
+        <button onclick="prevPage(1)">Back</button>
+        <button onclick="nextPage(3)">Next</button>
+    </div>
+
+    <!-- Page 3: Performance Evaluation -->
+    <div class="container hidden" id="page3">
+        <h1>Performance Evaluation</h1>
+        <label>Driver's Skills (1-5):</label>
+        <input type="number" min="1" max="5" id="driver-skills" required>
+
+        <label>Penalties:</label>
+        <select id="penalties" required>
+            <option value="">Select...</option>
+            <option value="None">None</option>
+            <option value="Yellow Card">Yellow Card</option>
+            <option value="Red Card">Red Card</option>
+        </select>
+
+        <label>Durability & Strength:</label>
+        <select id="durability" required>
+            <option value="">Select...</option>
+            <option value="Stable">Stable</option>
+            <option value="Unstable">Unstable</option>
+        </select>
+
+        <label>Did the Robot Face any Damage:</label>
+        <select id="damage" required>
+            <option value="">Select...</option>
+            <option value="no-damage">No damage</option>
+            <option value="minor">Minor</option>
+            <option value="major">Major</option>
+        </select>
+
+        <label>Aligning time(1-5):</label>
+        <input type="number" min="1" max="5" id="alignment" required>
+
+        <label>Scoring Accuracy(1-5):</label>
+        <input type="number" min="1" max="5" id="accuracy" required>
+
+        <label>Speed Rating (1-5):</label>
+        <input type="number" min="1" max="5" id="speed" required>
+
+        <label>Special Features or Skills:</label>
+        <textarea id="special-features" placeholder="Unique functions or strategies"></textarea>
+
+        <button onclick="prevPage(2)">Back</button>
+        <button onclick="nextPage(4)">Next</button>
+    </div>
+
+    <!-- Page 4: Feedback -->
+    <div class="container hidden" id="page4">
+        <h1>Overall Feedback</h1>
+        <label>Feedback:</label>
+        <textarea id="feedback" rows="5" placeholder="Provide overall feedback"></textarea>
+
+        <button onclick="prevPage(3)">Back</button>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <!-- Page 5: Pit Scouting Form (Separate Container) -->
+    <div class="container hidden" id="page5">
+        <h1>Pit Scouting Form</h1>
+
+        <label>Which game elements can you score?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="coral">Coral</label>
+            <label><input type="checkbox" id="algae">Algae</label>
+        </div>
+        <br/>
+        <label>Which levels can you score the coral on?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" id="l1"> L1/Barge</label>
+            <label><input type="checkbox" id="l2"> L2</label>
+            <label><input type="checkbox" id="l3"> L3</label>
+            <label><input type="checkbox" id="l4"> L4</label>
+        </div>
+        <br/>
+        <label>Shallow or Deep Cage:</label>
+        <select id="cage" required>
+            <option value="">Select...</option>
+            <option value="Shallow">Shallow</option>
+            <option value="Deep">Deep</option>
+        </select>
+        <label>Doesn't score cage</label>
+        <input type="checkbox" id="no-cage"><br>
+        <br>
+        <label>How many algae can you score in the processor?</label>
+        <input type="number" id="processor-score" required>
+        <label>Doesn't score in the processor</label>
+        <input type="checkbox" id="doesnt-score-processor"> <br>
+        <br>
+        <label>How many algae in the net?</label>
+        <input type="number" id="net-score" required>
+        <label>Doesn't score in the net</label>
+        <input type="checkbox" id="doesnt-score-net"><br/>
+        <br/>
+        <label>Starting Height:</label>
+        <input type="number" id="starting-height" required>
+
+        <label>Max Height:</label>
+        <input type="number" id="max-height" required>
+
+        <label>Drivetrain:</label>
+        <input type="text" id="drivetrain" required>
+
+        <label>Weight:</label>
+        <input type="number" id="weight" required>
+  
+        <label>How many autonomous points can you score confidently?</label>
+        <input type="number" id="autonomous-points" required>
+
+        <label>Special Features or Skills:</label>
+        <textarea id="special-features" placeholder="Unique functions or strategies"></textarea>
+
+        <button onclick="prevPage(1)">Back</button>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        function nextPage(page) {
+            // Hide the current page
+            document.querySelector(`#page${page - 1}`).classList.add('hidden');
+            // Show the next page
+            document.querySelector(`#page${page}`).classList.remove('hidden');
+        }
+    
+        function prevPage(page) {
+            // Hide the current page
+            document.querySelector(`#page${page + 1}`).classList.add('hidden');
+            // Show the previous page
+            document.querySelector(`#page${page}`).classList.remove('hidden');
+        }
+        
+        function openPitScouting() {
+            // Hide the welcome page and show the pit scouting form
+            document.querySelector(`#page1`).classList.add('hidden');
+            document.querySelector(`#page5`).classList.remove('hidden');
+        }
+    
+        function submitForm() {
+            alert("Form Submitted Successfully!");
+            location.reload(); // Refresh the page after submission
+        }
+    </script>
+    
+</body>
+</html>
